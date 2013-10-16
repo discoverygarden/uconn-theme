@@ -31,7 +31,7 @@
 			"file": "sass/design/_header.scss",
 			"settings":
 			{
-				"buffer_size": 1125,
+				"buffer_size": 1006,
 				"line_ending": "Unix"
 			}
 		},
@@ -55,7 +55,7 @@
 			"file": "sass/design/_footer.scss",
 			"settings":
 			{
-				"buffer_size": 442,
+				"buffer_size": 489,
 				"line_ending": "Unix"
 			}
 		},
@@ -79,7 +79,7 @@
 			"file": "sass/design/_islandora.scss",
 			"settings":
 			{
-				"buffer_size": 3734,
+				"buffer_size": 4268,
 				"line_ending": "Unix"
 			}
 		},
@@ -209,6 +209,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"450px",
+			"16%",
+			"basic",
+			"collection",
 			"block-views-frontpage-solr-boxes-block",
 			"ignored_packages",
 			"extend",
@@ -279,7 +283,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -287,15 +291,15 @@
 					"file": "sass/design/_header.scss",
 					"settings":
 					{
-						"buffer_size": 1125,
+						"buffer_size": 1006,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								643,
-								643
+								311,
+								311
 							]
 						],
 						"settings":
@@ -304,7 +308,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 741.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -347,8 +351,8 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								608,
+								608
 							]
 						],
 						"settings":
@@ -367,15 +371,15 @@
 					"file": "sass/design/_footer.scss",
 					"settings":
 					{
-						"buffer_size": 442,
+						"buffer_size": 489,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								379,
-								379
+								453,
+								453
 							]
 						],
 						"settings":
@@ -412,7 +416,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 43.0,
+						"translation.y": 3192.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -448,15 +452,15 @@
 					"file": "sass/design/_islandora.scss",
 					"settings":
 					{
-						"buffer_size": 3734,
+						"buffer_size": 4268,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3734,
-								3734
+								4266,
+								4266
 							]
 						],
 						"settings":
@@ -465,7 +469,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3220.0,
+						"translation.y": 3846.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

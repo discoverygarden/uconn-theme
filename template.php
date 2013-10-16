@@ -133,7 +133,7 @@ function uconn_theme_preprocess_block(&$variables, $hook) {
 
 function uconn_theme_form_islandora_solr_simple_search_form_alter(&$form, &$form_state, $form_id) {
   $link = array(
-    '#markup' => l(t("Advanced Search"), "uuid/node/c4f960eb-e02b-4b17-9ef3-ab0e5931ac0f", array('attributes' => array('class' => array('adv_search')))),
+    '#markup' => l(t("Advanced Search"), "node/6", array('attributes' => array('class' => array('adv_search')))),
   );
   $form['simple']['advanced_link'] = $link;
 }
