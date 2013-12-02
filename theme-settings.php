@@ -14,20 +14,15 @@ function uconn_theme_form_system_theme_settings_alter(&$form, &$form_state, $for
   }
 
   // Create the form using Forms API: http://api.drupal.org/api/7
-
-  /* -- Delete this line if you want to use this setting
-  $form['uconn_theme_example'] = array(
-    '#type'          => 'checkbox',
-    '#title'         => t('uconn_theme sample setting'),
-    '#default_value' => theme_get_setting('uconn_theme_example'),
-    '#description'   => t("This option doesn't do anything; it's just an example."),
+  $form['uconn_theme_mods_solr_field'] = array(
+    '#type'          => 'textfield',
+    '#title'         => t('Solr MODS abstract field.'),
+    '#default_value' => theme_get_setting('uconn_theme_mods_solr_field'),
+    '#description'   => t("This field will be truncated."),
   );
-  // */
 
   // Remove some of the base theme's settings.
-  /* -- Delete this line if you want to turn off this setting.
   unset($form['themedev']['zen_wireframes']); // We don't need to toggle wireframes on this site.
-  // */
 
   // We are editing the $form in place, so we don't need to return anything.
 }

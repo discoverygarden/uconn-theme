@@ -8,8 +8,46 @@
  */
 ?>
 
+<div id="sub-header">
+  <div id="uconn-header-container">
+    <div class="container">
+      <div class="row-fluid">
+        <div id="home-link-container" class="span8">
+          <a id="home-link" href="http://uconn.edu/">
+            <span id="wordmark" class="smoothing">UCONN</span>
+            <span id="university-of-connecticut" class="smoothing">University of Connecticut</span>
+          </a>
+        </div>
+      </div>  
+          <div id="button-container" class="span4">
+            <span>
+              <a class="btn btn-primary btn-block" href="http://uconn.edu/search.php"><span class="icon-search"></span></a>
+            </span>
+            <span>
+              <a class="btn btn-primary btn-block letters" href="http://uconn.edu/azindex.php"><span class="letter">A</span><span class="dash">-</span><span class="letter">Z</span></a>
+            </span>
+          </div>
+    </div>  
+  </div>
+
+  <div class="container" id="site-header">
+    <div class="row-fluid">
+      <div class="span8">
+        <p id="super-title"><a href="http://communications.uconn.edu/" class="smoothing">University Communications</a></p>
+      </div>
+      <div id="search-container" class="span4">
+        
+          <form class="form-search">
+    <input type="text" class="input-medium" placeholder="Search this site...">
+    <button type="submit" class="btn">Search</button>
+</form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="page">
-  
   <header class="header" id="header" role="banner">
 
     <?php if ($logo): ?>

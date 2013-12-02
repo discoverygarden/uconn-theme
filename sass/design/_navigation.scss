@@ -5,4 +5,31 @@
 .breadcrumb {
 	font-size: 80%;
 	color: #777;
+	position: relative;
+	z-index: 200;
+}
+
+#block-block-2 {
+	width: 41%;
+	float: left;
+	max-width: 450px;
+
+	h2 {
+	border: 1px solid #E0E0E0;
+	border-radius: 8px;
+	font-weight: normal;
+	font-size: 80%;
+	padding: 8px 13px;
+		a {
+			width: 100%;
+			display: inline-block;
+		}
+	}
+	p {
+		font-size: 75%;
+		letter-spacing: 0.3pt;
+		margin-left: 10px;
+		margin-top: 1em;
+		line-height: 1.5em;
+	}
 }

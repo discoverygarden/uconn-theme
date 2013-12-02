@@ -83,18 +83,50 @@ audio:not([controls]) {
  * Since we're using Sass, you'll need to declare your font faces here, then you
  * can add them to the font variables in the _base.scss partial.
  */
-/*
+
+.smoothing { -ms-filter: "progid:dximagetransform.microsoft.alpha(opacity=99)"; filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=99)"; }
+
 @font-face {
-  font-family: 'Example';
-  src: url('../fonts/example.eot');
-  src: url('../fonts/example.eot?iefix') format('eot'),
-    url('../fonts/example.woff') format('woff'),
-    url('../fonts/example.ttf') format('truetype'),
-    url('../fonts/example.svg#webfontOkOndcij') format('svg');
+  font-family: "UConn";
+  src:url("http://uconn.edu/shared/fonts/uconn/uconn.eot");
+  src:url("http://uconn.edu/shared/fonts/uconn/uconn.eot?#iefix") format("embedded-opentype"),url("http://uconn.edu/shared/fonts/uconn/uconn.svg#uconnregular") format("svg"),url("http://uconn.edu/shared/fonts/uconn/uconn.woff") format("woff"),url("http://uconn.edu/shared/fonts/uconn/uconn.ttf") format("truetype");
   font-weight: normal;
-  font-style: normal;
-}
-*/
+  font-style: normal; }
+ 
+@font-face {
+  font-family: "Proxima Nova";
+  src:url("http://uconn.edu/shared/fonts/proximanova_bold_macroman/ProximaNova-Bold-webfont.eot");
+  src:url("http://uconn.edu/shared/fonts/proximanova_bold_macroman/proximanova-bold-webfont.eot?#iefix") format("embedded-opentype"),url("http://uconn.edu/shared/fonts/proximanova_bold_macroman/proximanova-bold-webfont.svg#proxima_nova_ltsemibold") format("svg"),url("http://uconn.edu/shared/fonts/proximanova_bold_macroman/proximanova-bold-webfont.woff") format("woff"),url("http://uconn.edu/shared/fonts/proximanova_bold_macroman/ProximaNova-Bold-webfont.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal; }
+ 
+@font-face {
+  font-family: "Proxima Nova";
+  src:url("http://uconn.edu/shared/fonts/proximanova_bolditalic_macroman/ProximaNova-BoldIt-webfont.eot");
+  src:url("http://uconn.edu/shared/fonts/proximanova_bolditalic_macroman/proximanova-boldit-webfont.eot?#iefix") format("embedded-opentype"),url("http://uconn.edu/shared/fonts/proximanova_bolditalic_macroman/proximanova-boldit-webfont.svg#proxima_novabold_italic") format("svg"),url("http://uconn.edu/shared/fonts/proximanova_bolditalic_macroman/proximanova-boldit-webfont.woff") format("woff"),url("http://uconn.edu/shared/fonts/proximanova_bolditalic_macroman/ProximaNova-BoldIt-webfont.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic; }
+ 
+@font-face {
+  font-family: "Proxima Nova";
+  src:url("http://uconn.edu/shared/fonts/proximanova_semibold_macroman/ProximaNova-Sbold-webfont.eot");
+  src:url("http://uconn.edu/shared/fonts/proximanova_semibold_macroman/proximanova-sbold-webfont.eot?#iefix") format("embedded-opentype"),url("http://uconn.edu/shared/fonts/proximanova_semibold_macroman/proximanova-sbold-webfont.svg#proxima_nova_ltsemibold") format("svg"),url("http://uconn.edu/shared/fonts/proximanova_semibold_macroman/proximanova-sbold-webfont.woff") format("woff"),url("http://uconn.edu/shared/fonts/proximanova_semibold_macroman/ProximaNova-Sbold-webfont.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Proxima Nova";
+  src:url("http://uconn.edu/shared/fonts/proximanova_regular_macroman/ProximaNova-Reg-webfont.eot");
+  src:url("http://uconn.edu/shared/fonts/proximanova_regular_macroman/proximanova-reg-webfont.eot?#iefix") format("embedded-opentype"),url("http://uconn.edu/shared/fonts/proximanova_regular_macroman/proximanova-reg-webfont.svg#proxima_nova_rgregular") format("svg"),url("http://uconn.edu/shared/fonts/proximanova_regular_macroman/proximanova-reg-webfont.woff") format("woff"),url("http://uconn.edu/shared/fonts/proximanova_regular_macroman/ProximaNova-Reg-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+ 
+@font-face {
+  font-family: "Proxima Nova";
+  src:url("http://uconn.edu/shared/fonts/proximanova_italic_macroman/ProximaNova-RegIt-webfont.eot");
+  src:url("http://uconn.edu/shared/fonts/proximanova_italic_macroman/proximanova-regit-webfont.eot?#iefix") format("embedded-opentype"),url("http://uconn.edu/shared/fonts/proximanova_italic_macroman/proximanova-regit-webfont.svg#proxima_novaregular_italic") format("svg"),url("http://uconn.edu/shared/fonts/proximanova_italic_macroman/proximanova-regit-webfont.woff") format("woff"),url("http://uconn.edu/shared/fonts/proximanova_italic_macroman/ProximaNova-RegIt-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic; }
 
 /**
  * 1. Set default font family to sans-serif.

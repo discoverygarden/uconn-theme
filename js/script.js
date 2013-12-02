@@ -21,7 +21,7 @@ Drupal.behaviors.my_custom_behavior = {
     
 	//Search box text	
 	$(window).load(function() {
-		$("#edit-islandora-simple-search-query").val("Search this repository");
+		$("#edit-islandora-simple-search-query").val("Search");
 
 		  $("#edit-islandora-simple-search-query").focus(function() {
 	      $(this).val("");

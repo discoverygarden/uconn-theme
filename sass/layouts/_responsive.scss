@@ -64,9 +64,8 @@ $zen-auto-include-item-base: false;
   }
   #navigation {
     /* Move the navbar up inside #main's padding. */
-    position: absolute;
-    top: 0;
-    height: $nav-height;
+
+    height: 0;
     width: $zen-grid-width;
   }
 }
@@ -211,5 +210,61 @@ $zen-auto-include-item-base: false;
     .region-sidebar-second {
       @include zen-grid-item(1, 5);
     }
+  }
+}
+
+// UCONN Media Queries //
+
+@media all and (max-width: 480px) {
+  #university-of-connecticut, .header__logo-image {
+    display: none;
+  }
+  #site-name {
+    font-size: 98% !important;
+  }
+  #block-block-2, #block-islandora-solr-simple {
+    width: 100% !important;
+  }
+  #block-accordion-rotator-accordion-rotator {
+    width: 92.3% !important;
+  }
+  #block-islandora-solr-simple .form-submit {
+    font-size: 80% !important;
+    width: 30% !important;
+  }
+}
+
+@media all and (max-width: 767px) {
+
+  #name-and-slogan {
+    padding-left: 10px !important;
+    font-size: 85%;
+  }
+}
+
+@media all and (max-width: 935px) {
+
+  #name-and-slogan {
+    padding-left: 20px !important;
+    font-size: 90%;
+    padding-top: 20px !important;
+  }
+  #site-name {
+    font-size: 90% !important;
+  }
+  #block-islandora-solr-simple .form-submit {
+    font-size: 90%;
+  }
+  #header {
+    height: 95px !important;
+  }
+  .not-front #header {
+  height: 130px !important;
+  }
+  .header__logo {
+    margin-top: 1.2em !important;
+  }
+  #main {
+    top: 7em !important;
   }
 }

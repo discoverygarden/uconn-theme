@@ -60,8 +60,8 @@ stylesheets[all][] = css/styles.css
 ;
 ; If you still wish to use conditional stylesheets, you must install the
 ; conditional stylesheets module: https://drupal.org/project/conditional_styles
-;stylesheets-conditional[lte IE 8][all][] = css/ie8.css
-
+stylesheets-conditional[IE 8][all][] = css/ie8.css
+;stylesheets-conditional[IE 9][all][] = css/ie9.css
 
 
 ; Optionally add some JavaScripts to your theme.
@@ -136,6 +136,7 @@ settings[zen_html5_respond_meta][] = html5
 settings[zen_html5_respond_meta][] = meta
 settings[zen_rebuild_registry]     = 1
 settings[zen_wireframes]           = 0
+settings[uconn_theme_mods_solr_field] = mods_abstract_ms
 
 ; To make this sub-theme an admin theme with shortcut links next to titles,
 ; uncomment the line below.
