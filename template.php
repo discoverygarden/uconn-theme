@@ -202,8 +202,8 @@ function uconn_theme_islandora_internet_archive_bookreader_book_info(&$vars) {
  * Prepares variables for islandora_solr templates.
  */
 function uconn_theme_preprocess_islandora_solr(&$variables) {
-  $results = $variables['results'];
-  foreach ($results as $key => $result) {
+  $results = &$variables['results'];
+  foreach ($results as $key => &$result) {
     // Thumbnail.
     $path = url($result['thumbnail_url'], array('query' => $result['thumbnail_url_params']));
     $image = theme('image', array('path' => $path));
@@ -218,17 +218,24 @@ function uconn_theme_preprocess_islandora_solr(&$variables) {
     if (isset($result['object_url_fragment'])) {
       $options['fragment'] = $result['object_url_fragment'];
     }
-    // Customization trim of abstract.
-    if (isset($result['solr_doc'][theme_get_setting('uconn_theme_mods_solr_field')]['value'])) {
-      $variables['results'][$key]['solr_doc'][theme_get_setting('uconn_theme_mods_solr_field')]['value'] = substr(
-        $result['solr_doc'][theme_get_setting('uconn_theme_mods_solr_field')]['value'],
-        0,
-        150
-      );
-    }
-    // End customization trim of abstract.
     // Thumbnail link.
     $variables['results'][$key]['thumbnail'] = l($image, $result['object_url'], $options);
+    $truncation_fields = array(
+      theme_get_setting('uconn_theme_mods_solr_field') => theme_get_setting('uconn_theme_mods_solr_field'),
+      theme_get_setting('uconn_theme_hocr_solr_field') => theme_get_setting('uconn_theme_hocr_solr_field'),
+    );
+    foreach ($truncation_fields as $field) {
+      if (isset($result['solr_doc'][$field]) && !empty($result['solr_doc'][$field]['value'])) {
+        if ($field === 'text_nodes_HOCR_hlt') {
+          $result['solr_doc'][$field]['value'] .= l(t('...[more]'), $result['object_url'], $options);
+        }
+        else {
+          if (strlen(strip_tags($result['solr_doc'][$field]['value'])) > 240) {
+            $result['solr_doc'][$field]['value'] .= l(t('...[more]'), $result['object_url'], $options);
+          }
+        }
+      }
+    }
   }
 }
 
@@ -236,13 +243,14 @@ function uconn_theme_preprocess_islandora_solr(&$variables) {
  * Implements template_preprocess_HOOK().
  */
 function uconn_theme_preprocess_islandora_basic_collection_wrapper(&$variables) {
+  drupal_add_js(drupal_get_path('theme', 'uconn_theme') . '/js/uconn_theme_more.js');
   $page_number = (empty($_GET['page'])) ? 0 : $_GET['page'];
   $page_size = (empty($_GET['pagesize'])) ? variable_get('islandora_basic_collection_page_size', '10') : $_GET['pagesize'];
   $islandora_object = $variables['islandora_object'];
   try {
     $dc = $islandora_object['DC']->content;
     $dc_object = DublinCore::importFromXMLString($dc);
-    if ($islandora_object['MODS']) {
+    if (isset($islandora_object['MODS'])) {
       $mods_dom_doc = new DOMDocument();
       $mods_dom_doc->loadXML($islandora_object['MODS']->content);
       $mods_xpather = new DOMXPath($mods_dom_doc);
@@ -253,7 +261,7 @@ function uconn_theme_preprocess_islandora_basic_collection_wrapper(&$variables) 
   }
 
   $variables['metadata'] = array();
-  if ($islandora_object['MODS']) {
+  if (isset($islandora_object['MODS'])) {
 
     $title_results = $mods_xpather->query("//*[local-name() = 'title']/text()");
     if (isset($title_results->item(0)->textContent)) {
@@ -279,7 +287,15 @@ function uconn_theme_preprocess_islandora_basic_collection_wrapper(&$variables) 
 
     $abstract_results = $mods_xpather->query("//*[local-name() = 'abstract']/text()");
     if (isset($abstract_results->item(0)->textContent)) {
-      $variables['metadata'][t('Description: ')] = substr($abstract_results->item(0)->textContent, 0, 150);
+      $variables['metadata'][t('Description: ')] = '';
+      if (strlen($abstract_results->item(0)->textContent) < 256) {
+        $variables['short_description'] = $abstract_results->item(0)->textContent;
+      }
+      else {
+        $variables['more_link'] = '<a href="#" class="uconn-show-more">' . t('[more]') . '</a>';
+        $variables['short_description'] = '<span class="uconn-short-description">' . truncate_utf8($abstract_results->item(0)->textContent, 256, TRUE, TRUE) . '</span>';
+        $variables['full_description'] = '<span class="uconn-hidden uconn-full-description">' . $abstract_results->item(0)->textContent . '</span>';
+      }
     }
 
     $identifier_results = $mods_xpather->query("//*[local-name() = 'identifier' and @type = 'local']/text()");
@@ -341,4 +357,55 @@ function uconn_theme_preprocess_islandora_basic_collection_wrapper(&$variables) 
 
   $variables['view_links'] = array($grid_link, $list_link);
   $variables['collection_content'] = $collection_content;
+}
+
+/**
+ * Implements hook_islandora_solr_object_result_alter().
+ */
+function uconn_theme_islandora_solr_object_result_alter(&$search_results, $query_processor) {
+  if (isset($search_results['solr_doc'][theme_get_setting('uconn_theme_mods_solr_field')])) {
+    if (is_array($search_results['solr_doc'][theme_get_setting('uconn_theme_mods_solr_field')])) {
+      foreach ($search_results['solr_doc'][theme_get_setting('uconn_theme_mods_solr_field')] as &$multi) {
+        $multi = truncate_utf8(
+          $multi,
+          256,
+          TRUE
+        );
+      }
+    }
+    else {
+      $search_results['solr_doc'][theme_get_setting('uconn_theme_mods_solr_field')] = truncate_utf8(
+        $search_results['solr_doc'][theme_get_setting('uconn_theme_mods_solr_field')],
+        256,
+        TRUE
+      );
+    }
+  }
+  // Only need to truncate when the default query is used.
+  if ($query_processor->internalSolrQuery == variable_get('islandora_solr_base_query', '*:*') && isset($search_results['solr_doc'][theme_get_setting('uconn_theme_hocr_solr_field')])) {
+    // Probably not multi-valued but we'll do it anyway.
+    if (is_array($search_results['solr_doc'][theme_get_setting('uconn_theme_hocr_solr_field')])) {
+      foreach ($search_results['solr_doc'][theme_get_setting('uconn_theme_hocr_solr_field')] as &$multi) {
+        $multi = truncate_utf8(
+          $multi,
+          256,
+          TRUE
+        );
+      }
+    }
+    else {
+      $search_results['solr_doc'][theme_get_setting('uconn_theme_hocr_solr_field')] = truncate_utf8(
+        $search_results['solr_doc'][theme_get_setting('uconn_theme_hocr_solr_field')],
+        256,
+        TRUE
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_islandora_solr_query_alter().
+ */
+function uconn_theme_islandora_solr_query_alter($islandora_solr_query) {
+  $islandora_solr_query->solrParams['hl.fragsize'] = 256;
 }
