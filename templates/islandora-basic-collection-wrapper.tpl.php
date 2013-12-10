@@ -27,7 +27,15 @@
       <?php foreach ($metadata as $metadatum_label => $metadatum): ?>
         <div class="islandora-basic-collection-wrapper-metadatum">
           <span><?php print $metadatum_label; ?></span>
-          <span><?php print $metadatum; ?></span>
+          <span>
+            <?php if ($metadatum_label == t('Description: ')): ?>
+              <?php print $short_description; ?>
+              <?php isset($full_description) ? print $full_description : '' ?>
+              <?php isset($more_link) ? print $more_link : ''?>
+              <?php else: ?>
+              <?php print $metadatum; ?>
+            <?php endif; ?>
+          </span>
         </div>
       <?php endforeach ?>
    <?php endif; ?>

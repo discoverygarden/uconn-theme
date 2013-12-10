@@ -25,7 +25,7 @@
 	}
 	.form-submit {
 		height: 45px;
-		width: 27%; 
+		width: 27%;
 		background: #777;
 		color: #fff;
 		border-radius: 10px;
@@ -44,7 +44,7 @@
 	}
 	.adv_search {
 		font-size: 75%;
-		margin: 5px 0 0 5px;	
+		margin: 5px 0 0 5px;
 		display: inline-block;
 		letter-spacing: 0.3pt;
 	}
@@ -75,7 +75,7 @@
 	}
 	.islandora-solr-date-filter {
 		@extend .islandora-solr-range-slider;
-		
+
 		.toggle-date-range-filter {
 			text-decoration: underline;
 			color: #EDC240;
@@ -115,7 +115,7 @@
   padding: 0 !important;
   li {
 	  border-bottom: 1px solid #EEF0ED;
-	  list-style: none outside none;	
+	  list-style: none outside none;
 	  padding: 3px 0;
   }
   li.last {
@@ -149,7 +149,7 @@
 	opacity: 0.5;
 	li {
 		padding: 0;
-	}	
+	}
 }
 
 .page-islandora-search .islandora-solr-display li a {
@@ -172,7 +172,7 @@
 		font-size: 95%;
 		padding-top: 2px;
 		padding-left: 10px;
-	}	
+	}
 	.islandora-basic-collection-display-switch {
 		position: absolute;
 		right: 30px;
@@ -180,7 +180,7 @@
 	}
 
 	p {
-		margin-left: 0.5em;	
+		margin-left: 0.5em;
 		margin-bottom: 0;
 	}
 	hr {
@@ -225,7 +225,7 @@
 	border-radius: 18px;
 
 	.solr-thumb {
-		float: right;	
+		float: right;
 		img {
 			border: 0;
 			padding: 15px 15px 10px 10px;
@@ -241,14 +241,14 @@
 			padding-top: 10px;
 			color: #777;
 			font-weight: normal;
-			letter-spacing: 0.5pt;			
+			letter-spacing: 0.5pt;
 		}
 		.text-nodes-hocr-hlt {
 			font-size: 75%;
 			padding-top: 0;
 			color: #777;
 			font-weight: normal;
-			letter-spacing: 0.5pt;			
+			letter-spacing: 0.5pt;
 		}
 	}
 
@@ -260,10 +260,10 @@
 
 .islandora-solr-search-result.odd {
 	background: #CCC;
-	
+
 }
 .islandora-solr-search-result.even {
-	border: 1px solid #CCC;	
+	border: 1px solid #CCC;
 }
 
 #islandora-solr-result-count {
@@ -288,4 +288,10 @@
 .acc_text {
 	padding-left: 5px !important;
 	font-size: 90% !important;
+}
+
+// UCONN more and less //
+
+.uconn-hidden{
+  display: none;
 }
