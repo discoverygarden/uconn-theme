@@ -2180,7 +2180,8 @@ tr.selected td {
   height: 34px;
   padding: 3px 10px 5px 10px;
   border-radius: 3px;
-  color: #D7D7D7;
+  /* color: #D7D7D7; */
+  color: #333333;
   line-height: 1.5em;
 }
 /* line 236, ../sass/design/_header.scss */
@@ -2448,7 +2449,10 @@ a.dwn_btn:hover {
 #block-islandora-solr-simple .form-text {
   width: 65%;
   height: 50px;
+  /* @MOD dneary 11/12/2013 4:13:59 PM - CTDA request to change simple search term text color.
   color: #D7D7D7;
+  */
+  color: #333333;
   border: 1px solid #E0E0E0;
   line-height: 3em;
   padding-left: 0.5em;
